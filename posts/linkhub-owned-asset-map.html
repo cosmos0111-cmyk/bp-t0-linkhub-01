@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Hub 자산 지도: 도메인, 사이트맵, 검색 접근성의 연결 | Link Hub</title>
+  <meta name="description" content="Link Hub가 커스텀 도메인과 사이트맵, canonical, robots 정책을 묶어 운영 자산 지도로 쓰이는 방식을 설명합니다.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="bpaas-design-system" content="link-hub-asset-post">
+  <meta name="bpaas-design-theme" content="kr-editorial-index">
+  <link rel="canonical" href="https://link-hub.org/posts/linkhub-owned-asset-map.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Link Hub 자산 지도: 도메인, 사이트맵, 검색 접근성의 연결">
+  <meta property="og:description" content="Link Hub가 커스텀 도메인과 사이트맵, canonical, robots 정책을 묶어 운영 자산 지도로 쓰이는 방식을 설명합니다.">
+  <meta property="og:url" content="https://link-hub.org/posts/linkhub-owned-asset-map.html">
+  <meta property="og:image" content="https://link-hub.org/og-image.svg">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171717;
+      --muted: #66645f;
+      --line: #d9d4c8;
+      --paper: #f7f4ec;
+      --panel: #ffffff;
+      --accent: #0f6f68;
+      --accent-2: #b84a2f;
+      --deep: #1f2a2e;
+      font-family: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px clamp(20px, 5vw, 72px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 244, 236, 0.94);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 17px;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--deep);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      color: var(--accent);
+      background: var(--panel);
+    }
+    article {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 0.9fr);
+      gap: clamp(28px, 5vw, 72px);
+      padding: clamp(46px, 7vw, 92px) clamp(20px, 5vw, 72px) 80px;
+    }
+    .meta {
+      border-top: 2px solid var(--deep);
+      padding-top: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      position: sticky;
+      top: 24px;
+      align-self: start;
+    }
+    .label {
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: 1;
+      margin: 0 0 24px;
+    }
+    .deck {
+      font-size: clamp(17px, 2vw, 21px);
+      color: #45413b;
+      line-height: 1.75;
+      margin: 0 0 42px;
+      max-width: 780px;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: clamp(24px, 4vw, 38px);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(26px, 4vw, 38px);
+      margin: 0 0 18px;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 17px;
+      margin: 0 0 18px;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    footer {
+      padding: 28px clamp(20px, 5vw, 72px);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      article { grid-template-columns: 1fr; }
+      .meta { position: static; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Link Hub 자산 지도: 도메인, 사이트맵, 검색 접근성의 연결",
+    "description": "Link Hub가 커스텀 도메인과 사이트맵, canonical, robots 정책을 묶어 운영 자산 지도로 쓰이는 방식을 설명합니다.",
+    "dateModified": "2026-07-04",
+    "mainEntityOfPage": "https://link-hub.org/posts/linkhub-owned-asset-map.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Link Hub"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">LH</span>
+      <span>Link Hub</span>
+    </a>
+    <a href="/sitemap.xml">사이트맵</a>
+  </header>
+
+  <article>
+    <aside class="meta">
+      <div class="label">owned asset / link hub</div>
+      <div>Link Hub owned asset note</div>
+      <div>Updated 2026-07-04</div>
+      <a class="back" href="/">허브로 돌아가기</a>
+    </aside>
+    <div>
+      <h1>Link Hub 자산 지도: 도메인, 사이트맵, 검색 접근성의 연결</h1>
+      <p class="deck">Link Hub가 커스텀 도메인과 사이트맵, canonical, robots 정책을 묶어 운영 자산 지도로 쓰이는 방식을 설명합니다.</p>
+      
+      <section>
+        <h2>링크허브는 목록보다 지도에 가깝습니다</h2>
+        <p>일반적인 링크 모음은 URL을 나열하는 데서 끝납니다. Link Hub는 URL이 실제 운영 자산인지, 어떤 계층의 사이트인지, 검색엔진이 따라갈 수 있는 구조인지까지 함께 봅니다.</p>
+        <p>루트 페이지의 대표 디렉토리는 커스텀 도메인이 있고 배포 상태가 안정적인 사이트를 우선 노출합니다. 무료 호스트 주소와 임시 테스트 주소는 허브의 핵심 목록에서 제외합니다.</p>
+      </section>
+
+      <section>
+        <h2>사이트맵과 robots.txt를 같이 배포하는 이유</h2>
+        <p>검색엔진은 링크를 발견하더라도 robots 정책과 canonical이 어긋나면 신뢰하기 어렵습니다. 그래서 Link Hub는 루트, 게시글, 대표 자산을 sitemap.xml에 넣고 robots.txt에서 명시적으로 허용합니다.</p>
+        <p>새 서브도메인을 붙일 때도 CNAME만 만드는 것으로 끝내지 않습니다. 로컬 파일, registry, 배포 상태, 사이트맵, favicon, robots 정책이 같은 방향을 가리키도록 맞춥니다.</p>
+      </section>
+
+      <section>
+        <h2>커버리지 계산과 이어지는 방식</h2>
+        <p>링크쥬스 커버리지는 단순 게시 횟수가 아니라 어떤 대상 리소스가 커버되었는지에 따라 의미가 달라집니다. 도메인이 추가되면 registry와 link-graph가 같은 사이트를 바라봐야 기존 진행률도 흔들리지 않습니다.</p>
+        <p>Link Hub는 이 연결 상태를 사람 눈으로 확인할 수 있게 만드는 상위 자산입니다. 운영 중 잡음이 생기면 먼저 루트 자산, 대상 리소스, 배포 상태, 커스텀 도메인을 순서대로 맞추는 것이 원칙입니다.</p>
+      </section>
+    </div>
+  </article>
+
+  <footer>
+    <span>© 2026 Link Hub. Owned asset reference.</span>
+    <span>Canonical: https://link-hub.org/posts/linkhub-owned-asset-map.html</span>
+  </footer>
+</body>
+</html>

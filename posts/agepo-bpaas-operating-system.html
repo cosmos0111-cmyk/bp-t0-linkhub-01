@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agepo와 BPaaS 운영 시스템: 검색 자산을 관리하는 방식 | Link Hub</title>
+  <meta name="description" content="Agepo 캠페인이 BPaaS의 Scouter, Architect, Ghost, Closer 흐름으로 검색 자산을 생성하고 운영하는 구조를 정리합니다.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="bpaas-design-system" content="link-hub-asset-post">
+  <meta name="bpaas-design-theme" content="kr-editorial-index">
+  <link rel="canonical" href="https://link-hub.org/posts/agepo-bpaas-operating-system.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Agepo와 BPaaS 운영 시스템: 검색 자산을 관리하는 방식">
+  <meta property="og:description" content="Agepo 캠페인이 BPaaS의 Scouter, Architect, Ghost, Closer 흐름으로 검색 자산을 생성하고 운영하는 구조를 정리합니다.">
+  <meta property="og:url" content="https://link-hub.org/posts/agepo-bpaas-operating-system.html">
+  <meta property="og:image" content="https://link-hub.org/og-image.svg">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171717;
+      --muted: #66645f;
+      --line: #d9d4c8;
+      --paper: #f7f4ec;
+      --panel: #ffffff;
+      --accent: #0f6f68;
+      --accent-2: #b84a2f;
+      --deep: #1f2a2e;
+      font-family: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px clamp(20px, 5vw, 72px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 244, 236, 0.94);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 17px;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--deep);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      color: var(--accent);
+      background: var(--panel);
+    }
+    article {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 0.9fr);
+      gap: clamp(28px, 5vw, 72px);
+      padding: clamp(46px, 7vw, 92px) clamp(20px, 5vw, 72px) 80px;
+    }
+    .meta {
+      border-top: 2px solid var(--deep);
+      padding-top: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      position: sticky;
+      top: 24px;
+      align-self: start;
+    }
+    .label {
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: 1;
+      margin: 0 0 24px;
+    }
+    .deck {
+      font-size: clamp(17px, 2vw, 21px);
+      color: #45413b;
+      line-height: 1.75;
+      margin: 0 0 42px;
+      max-width: 780px;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: clamp(24px, 4vw, 38px);
+      margin-bottom: 22px;
+    }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(26px, 4vw, 38px);
+      margin: 0 0 18px;
+    }
+    p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 17px;
+      margin: 0 0 18px;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    footer {
+      padding: 28px clamp(20px, 5vw, 72px);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      article { grid-template-columns: 1fr; }
+      .meta { position: static; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Agepo와 BPaaS 운영 시스템: 검색 자산을 관리하는 방식",
+    "description": "Agepo 캠페인이 BPaaS의 Scouter, Architect, Ghost, Closer 흐름으로 검색 자산을 생성하고 운영하는 구조를 정리합니다.",
+    "dateModified": "2026-07-04",
+    "mainEntityOfPage": "https://link-hub.org/posts/agepo-bpaas-operating-system.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Link Hub"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">LH</span>
+      <span>Link Hub</span>
+    </a>
+    <a href="/sitemap.xml">사이트맵</a>
+  </header>
+
+  <article>
+    <aside class="meta">
+      <div class="label">owned asset / agepo</div>
+      <div>Link Hub owned asset note</div>
+      <div>Updated 2026-07-04</div>
+      <a class="back" href="/">허브로 돌아가기</a>
+    </aside>
+    <div>
+      <h1>Agepo와 BPaaS 운영 시스템: 검색 자산을 관리하는 방식</h1>
+      <p class="deck">Agepo 캠페인이 BPaaS의 Scouter, Architect, Ghost, Closer 흐름으로 검색 자산을 생성하고 운영하는 구조를 정리합니다.</p>
+      
+      <section>
+        <h2>Agepo는 단일 사이트가 아니라 운영 체계입니다</h2>
+        <p>Agepo 캠페인은 개별 랜딩 페이지 하나를 만들고 끝내는 방식이 아니라, 키워드 발굴부터 사이트 생성, 포스팅, 링크 분배, 검색엔진 제출까지 이어지는 운영 체계를 기준으로 움직입니다.</p>
+        <p>BPaaS는 이 흐름을 Scouter, Architect, Ghost, Closer 단계로 나누어 관리합니다. 각 단계는 독립적인 역할을 가지지만, 최종 기준은 site-registry에 남는 배포 상태와 검색 접근성입니다.</p>
+      </section>
+
+      <section>
+        <h2>판매 가능한 자산으로 남기는 설계</h2>
+        <p>생성된 사이트는 임시 실험물이 아니라, 도메인, 로컬 원본, 배포 저장소, 색인 상태가 함께 추적되는 운영 자산입니다. 특정 키워드에서 노출이 시작되면 해당 사이트 자체가 매각 또는 대행 운영의 단위가 될 수 있습니다.</p>
+        <p>그래서 링크허브는 단순 링크 목록보다 더 엄격한 역할을 갖습니다. 어느 자산이 실제 도메인을 갖고 있고, 어떤 계층에서 어떤 캠페인에 속하는지를 사람이 읽을 수 있는 형태로 공개합니다.</p>
+      </section>
+
+      <section>
+        <h2>링크허브가 맡는 위치</h2>
+        <p>Link Hub는 Agepo 캠페인의 자산 안내판입니다. 루트 페이지는 대표 자산을 보여주고, 하위 문서는 BPaaS 운영 방식과 개별 인프라 역할을 설명합니다.</p>
+        <p>검색엔진이 따라갈 수 있도록 robots.txt, sitemap.xml, canonical URL을 함께 배포하며, 추가되는 커스텀 도메인은 registry와 배포 상태가 맞을 때만 허브 안에 노출합니다.</p>
+      </section>
+    </div>
+  </article>
+
+  <footer>
+    <span>© 2026 Link Hub. Owned asset reference.</span>
+    <span>Canonical: https://link-hub.org/posts/agepo-bpaas-operating-system.html</span>
+  </footer>
+</body>
+</html>

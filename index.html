@@ -174,6 +174,68 @@
       background: var(--panel);
       margin-bottom: 50px;
     }
+    .owned-assets {
+      margin-bottom: 54px;
+      border-top: 2px solid var(--deep);
+      padding-top: 32px;
+    }
+    .owned-assets-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+    .owned-assets-head h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      margin: 0;
+    }
+    .owned-assets-head p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+      font-size: 17px;
+    }
+    .asset-card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .asset-card {
+      min-height: 230px;
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      transition: border-color 140ms ease, transform 140ms ease;
+    }
+    .asset-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .asset-card span {
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .asset-card strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+    .asset-card em {
+      color: var(--muted);
+      font-style: normal;
+      line-height: 1.6;
+      font-size: 14px;
+    }
     .principle {
       padding: 28px;
       border-right: 1px solid var(--line);
@@ -271,7 +333,9 @@
       }
       .principles,
       .asset-ledger,
-      .link-grid {
+      .link-grid,
+      .asset-card-grid,
+      .owned-assets-head {
         grid-template-columns: 1fr;
       }
       .ledger-cell {
@@ -345,12 +409,12 @@
       </div>
       <div class="ledger-cell">
         <div class="section-kicker">custom domains</div>
-        <strong>1018</strong>
+        <strong>1202</strong>
         <span>커스텀 도메인이 연결된 운영 자산입니다. 무료 호스트 주소와 분리해 관리합니다.</span>
       </div>
       <div class="ledger-cell">
         <div class="section-kicker">verified</div>
-        <strong>425</strong>
+        <strong>609</strong>
         <span>GSC verified 상태로 기록된 검색엔진 소유권 자산입니다.</span>
       </div>
       <div class="ledger-cell">
@@ -376,6 +440,43 @@
         <h2>주제별 분류</h2>
         <p>업종과 키워드 성격에 따라 마케팅, 생활 정보, 로컬 디렉토리, 전문 자료로 나눕니다.</p>
       </article>
+    </section>
+
+    <section class="owned-assets" aria-label="메인 보유 자산">
+      <div class="owned-assets-head">
+        <div>
+          <div class="section-kicker">main owned assets</div>
+          <h2>Agepo, BPaaS, NamaNavi를 한 허브에서 읽을 수 있게 정리합니다.</h2>
+        </div>
+        <p>
+          Link Hub 루트는 단순히 새 서브도메인을 붙인 목록이 아닙니다. 판매 가능한 프로그램,
+          운영 중인 캠페인, 라이선스 인프라, 커스텀 도메인 자산을 공개 가능한 범위에서 설명하는
+          자산 인덱스입니다.
+        </p>
+      </div>
+      <div class="asset-card-grid">
+
+          <a class="asset-card" href="/posts/agepo-bpaas-operating-system.html">
+            <span>owned asset / agepo</span>
+            <strong>Agepo와 BPaaS 운영 시스템: 검색 자산을 관리하는 방식</strong>
+            <em>Agepo 캠페인이 BPaaS의 Scouter, Architect, Ghost, Closer 흐름으로 검색 자산을 생성하고 운영하는 구조를 정리합니다.</em>
+          </a>
+          <a class="asset-card" href="/posts/namanavi-license-infra.html">
+            <span>owned asset / namanavi</span>
+            <strong>NamaNavi 인프라 노트: 라이선스와 배포 운영의 기준점</strong>
+            <em>NamaNavi가 BPaaS 판매와 운영에서 라이선스, 계정, 다운로드 흐름의 기준점으로 쓰이는 이유를 정리합니다.</em>
+          </a>
+          <a class="asset-card" href="/posts/linkhub-owned-asset-map.html">
+            <span>owned asset / link hub</span>
+            <strong>Link Hub 자산 지도: 도메인, 사이트맵, 검색 접근성의 연결</strong>
+            <em>Link Hub가 커스텀 도메인과 사이트맵, canonical, robots 정책을 묶어 운영 자산 지도로 쓰이는 방식을 설명합니다.</em>
+          </a>
+          <a class="asset-card" href="/posts/campaign-registry-link-graph.html">
+            <span>owned asset / operations</span>
+            <strong>캠페인 Registry와 Link Graph: 잡음 없는 편입을 위한 기준</strong>
+            <em>외부 사이트 편입, 커스텀 도메인 추가, 링크쥬스 승계를 같은 기준으로 맞추기 위한 BPaaS 운영 원칙입니다.</em>
+          </a>
+      </div>
     </section>
 
     <div id="directory">
@@ -516,10 +617,10 @@
             <strong>상암 코인노래방 후기</strong>
             <span>상암 · 코인노래방 · Tier 3</span>
           </a>
-          <a class="link-card" href="https://banpo-body-care.node-link.shop/" rel="noopener">
-            <span class="link-host">banpo-body-care.node-link.shop</span>
-            <strong>반포 마사지 정보</strong>
-            <span>반포 · 마사지 · Tier 3</span>
+          <a class="link-card" href="https://sangsu-night-guide.link-hub.org/" rel="noopener">
+            <span class="link-host">sangsu-night-guide.link-hub.org</span>
+            <strong>상수 유흥 추천정보</strong>
+            <span>상수 · 유흥 · Tier 3</span>
           </a>
         </div>
       </section>
@@ -588,6 +689,10 @@
         </p>
       </div>
       <div class="resource-list">
+        <a href="/posts/agepo-bpaas-operating-system.html">Agepo와 BPaaS 운영 시스템: 검색 자산을 관리하는 방식</a>
+        <a href="/posts/namanavi-license-infra.html">NamaNavi 인프라 노트: 라이선스와 배포 운영의 기준점</a>
+        <a href="/posts/linkhub-owned-asset-map.html">Link Hub 자산 지도: 도메인, 사이트맵, 검색 접근성의 연결</a>
+        <a href="/posts/campaign-registry-link-graph.html">캠페인 Registry와 Link Graph: 잡음 없는 편입을 위한 기준</a>
         <a href="/posts/juice-1.html">검색 노출 최적화와 백링크 설계 매뉴얼</a>
         <a href="/posts/juice-2.html">네트워크 자동화와 가치 연결 알고리즘 리포트</a>
         <a href="/posts/normal-1.html">SaaS 아키텍처와 멀티테넌시 설계 노트</a>
