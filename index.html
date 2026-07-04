@@ -2,181 +2,517 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>LINK-HUB.ORG // PBN 분산 마스터 노드 포털 및 백링크 주싱 시스템</title>
-  <!-- meta description 배제 (Tier 3 규약 준수) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link Hub | 검증된 사이트 링크 디렉토리와 백링크 허브</title>
+  <meta name="description" content="Link Hub는 운영 중인 사이트와 백링크 자료를 정리한 링크 디렉토리입니다. 검증된 도메인, 사이트맵, 검색엔진 접근성을 기준으로 큐레이션합니다.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="bpaas-design-system" content="link-hub-directory">
+  <meta name="bpaas-design-theme" content="kr-editorial-index">
+  <link rel="canonical" href="https://link-hub.org/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Link Hub | 검증된 사이트 링크 디렉토리">
+  <meta property="og:description" content="운영 사이트, 백링크 자료, 검색엔진 접근성을 한 곳에서 정리하는 링크 허브입니다.">
+  <meta property="og:url" content="https://link-hub.org/">
+  <meta property="og:image" content="https://link-hub.org/og-image.svg">
   <style>
     :root {
-      --bg-color: #030712;
-      --text-color: #f3f4f6;
-      --accent-color: #06b6d4;
-      --card-bg: #0b1329;
-      --border-color: #1e293b;
-      --font-family: 'Space Grotesk', 'Pretendard', sans-serif;
+      color-scheme: light;
+      --ink: #171717;
+      --muted: #66645f;
+      --line: #d9d4c8;
+      --paper: #f7f4ec;
+      --panel: #ffffff;
+      --accent: #0f6f68;
+      --accent-2: #b84a2f;
+      --deep: #1f2a2e;
+      font-family: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
-      font-family: var(--font-family);
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.9;
-      padding: 80px 24px;
-      display: flex;
-      justify-content: center;
-      background-image: radial-gradient(circle at 50% 50%, rgba(11, 19, 41, 0.95) 0%, rgba(3, 7, 18, 0.95) 90%);
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      letter-spacing: 0;
     }
-    .wrapper {
-      max-width: 800px;
-      width: 100%;
-    }
-    .brand-logo {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: #ffffff;
-      text-align: center;
-      letter-spacing: -0.05em;
-      margin-bottom: 8px;
-    }
-    .sub-brand {
-      font-size: 0.9rem;
-      font-family: monospace;
-      color: var(--accent-color);
-      text-align: center;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      margin-bottom: 48px;
-    }
-    .essay-view {
-      font-size: 1.08rem;
-      color: #cbd5e1;
-      text-align: justify;
-      margin-bottom: 60px;
-    }
-    .essay-view p {
-      margin-bottom: 28px;
-      text-indent: 6px;
-    }
-    .essay-view span.highlight {
-      color: var(--accent-color);
-      font-weight: 600;
-    }
-    .node-grid {
-      border-top: 1px solid var(--border-color);
-      padding-top: 50px;
-      margin-top: 50px;
-    }
-    .grid-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 30px;
-      letter-spacing: -0.02em;
-    }
-    .node-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 28px;
-      margin-bottom: 24px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .node-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-color);
-    }
-    .node-header {
+    a { color: inherit; text-decoration: none; }
+    .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.88rem;
-      color: var(--accent-color);
-      margin-bottom: 12px;
+      padding: 22px clamp(20px, 5vw, 72px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 244, 236, 0.94);
+      position: sticky;
+      top: 0;
+      z-index: 3;
     }
-    .node-stars {
-      color: var(--accent-color);
-      letter-spacing: 2px;
-      font-size: 0.95rem;
-      margin-bottom: 10px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 17px;
     }
-    .node-body {
-      font-size: 0.98rem;
-      color: #e2e8f0;
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--deep);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      color: var(--accent);
+      background: var(--panel);
+    }
+    .nav {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: clamp(28px, 5vw, 70px);
+      padding: clamp(54px, 8vw, 104px) clamp(20px, 5vw, 72px) 44px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 7vw, 92px);
+      line-height: 0.95;
+      margin: 0 0 24px;
+      max-width: 850px;
+    }
+    .lead {
+      font-size: clamp(17px, 2vw, 21px);
+      color: #45413b;
+      line-height: 1.75;
+      max-width: 760px;
+      margin: 0;
+    }
+    .proof-panel {
+      border: 1px solid var(--deep);
+      background: var(--panel);
+      padding: 24px;
+      align-self: end;
+      box-shadow: 8px 8px 0 var(--deep);
+    }
+    .proof-panel strong {
+      display: block;
+      font-size: 38px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .proof-panel span {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    main {
+      padding: 46px clamp(20px, 5vw, 72px) 80px;
+    }
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      background: var(--panel);
+      margin-bottom: 50px;
+    }
+    .principle {
+      padding: 28px;
+      border-right: 1px solid var(--line);
+      min-height: 190px;
+    }
+    .principle:last-child { border-right: 0; }
+    .principle h2,
+    .directory-section h2,
+    .resources h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      margin: 0 0 14px;
+    }
+    .principle p {
+      margin: 0;
+      color: var(--muted);
       line-height: 1.7;
     }
-    .footer-view {
-      margin-top: 90px;
-      padding-top: 30px;
-      border-top: 1px solid var(--border-color);
-      text-align: center;
-      font-size: 0.85rem;
-      color: #0891b2;
+    .section-kicker {
+      color: var(--accent-2);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .directory-section {
+      margin: 0 0 54px;
+      padding-top: 8px;
+    }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .link-card {
+      display: grid;
+      gap: 10px;
+      min-height: 150px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      transition: border-color 140ms ease, transform 140ms ease;
+    }
+    .link-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .link-card strong {
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    .link-card span {
+      color: var(--muted);
+      line-height: 1.55;
+      overflow-wrap: anywhere;
+    }
+    .link-card .link-host {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .resources {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 28px;
+      border-top: 2px solid var(--deep);
+      padding-top: 36px;
+    }
+    .resource-list {
+      display: grid;
+      gap: 12px;
+    }
+    .resource-list a {
+      padding: 16px 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--deep);
+      font-weight: 700;
+    }
+    footer {
+      padding: 28px clamp(20px, 5vw, 72px);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      .hero,
+      .resources {
+        grid-template-columns: 1fr;
+      }
+      .principles,
+      .link-grid {
+        grid-template-columns: 1fr;
+      }
+      .principle {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .principle:last-child { border-bottom: 0; }
+      .nav { display: none; }
     }
   </style>
-<meta property="og:image" content="og-image.svg">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Link Hub",
+    "url": "https://link-hub.org/",
+    "description": "검증된 운영 사이트와 백링크 자료를 정리하는 링크 디렉토리"
+  }
+  </script>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="brand-logo">LINK-HUB.ORG</div>
-    <div class="sub-brand">// MASTER PBN NODE PORTAL</div>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark">LH</span>
+      <span>Link Hub</span>
+    </a>
+    <nav class="nav" aria-label="주요 탐색">
+      <a href="#directory">디렉토리</a>
+      <a href="#resources">자료실</a>
+      <a href="/sitemap.xml">사이트맵</a>
+    </nav>
+  </header>
 
-    <div class="essay-view">
-      <p>
-        디지털 분산 네트워크 생태계에서 백링크 구조의 기하학적 매핑과 가치 전달의 핵심 통로는, 사이트 간의 정교하고 정직한 신뢰 연결망을 엮어내는 가장 본질적인 이정표가 된다. 자본과 테크놀로지가 교차하는 차가운 마천루 숲 아래, 수많은 도메인이 저마다의 수치와 가치 지표를 뽐내며 신뢰의 유입 통로를 확보하기 위해 경쟁할 때, 우리는 오직 단 하나의 중심적이고 신뢰할 수 있는 마스터 노드의 가치와 연결 구조에 고요하게 집중하게 된다. 무분별하고 난잡하게 흩어진 정렬되지 않은 파편 노드들을 유기적이고 체계적인 쥬싱 흐름으로 통합 연결해 주는 최상위 시스템은, 낮 동안 가쁘게 요동치던 검색 엔진 크롤러들의 흐름을 가중치와 링크 파워의 정갈한 유입망 속으로 매끄럽게 흡수하여 사이트 본연의 권위와 테크니컬 신뢰도를 최대로 끌어올린다.
-      </p>
-      <p>
-        우리는 이 완벽하고 투명한 백링크 네트워크 연결의 기하학적 정합성을 엄격하게 이행하고, 외부 유료 시스템 대행에 의존하지 않고 오직 정해진 아키텍처 규칙 그대로 신뢰 연결의 흐름을 빚어내기 위해, 지성 어린 분석과 정밀한 도메인 스캔을 토대로 최고의 링크 허브 역할을 수행할 격조 높은 <span class="highlight">PBN 마스터 노드 포털</span> 센터를 설계하고 이곳에 마스터 아카이브 게이트웨이를 정식으로 등록했다. 하이테크적인 섀도우 블루 톤의 차분한 백그라운드 디자인과 조도를 눈에 피로하지 않도록 부드럽게 세팅한 사이언 펄 인테리어는, 외부 세상의 소란스럽고 자질구레한 노이즈를 완벽하게 배제하고 오직 각 티어 간의 단단하고 긴밀한 가치 전이와 신뢰 수혈에만 온전히 몰입하게 만든다. 중후하고 신뢰성 높은 도메인 가치가 뿜어내는 가중치의 향연 속에서, 우리는 단순한 인위적 조작을 넘어 각 도메인이 지닌 고유한 개성과 전문성을 그대로 대변하고 상생하는 단단한 네트워크를 구축하게 된다.
-      </p>
-      <p>
-        인터넷을 떠도는 무수히 복잡한 트래픽의 파편들이 밤의 깊은 숙면 속으로 조용히 잦아들 새벽녘, 마음속에 고요하고 세련된 <span class="highlight">t0-linkhub-01</span> 자국을 소중하게 각인해 둔 이 웅장한 가상 허브의 묵직한 디지털 게이트웨이를 통과하여 조용히 밤하늘을 올려다볼 때, 도심의 차가운 새벽 공기는 오늘 하루의 치열한 가치 정렬과 성실했던 시스템 빌드에 정갈한 마침표를 약속한다. 기계적인 빠른 비트로 복잡하게 회전하며 수많은 도메인들을 집어삼키는 자본의 광장 한가운데서, 타인의 성급한 계산법에 강제로 흔들리지 않고 오직 도메인의 고유한 품위와 테크니컬 신뢰 지수를 단단하게 지켜내는 이 정교한 마스터 포털은, 하루하루를 누구보다 진취적이고 완벽하게 일구어 가는 엔지니어들에게 허락된 더할 나위 없이 든든하고 정결한 정서적 휴식처이다. 어스름한 새벽하늘 너머로 맑고 은은하게 번져 나가는 푸른 그믐달의 아련함처럼, 오늘 밤 우리가 기하학적 신뢰와 조화로 직조해 낸 이 백링크 마스터 포털의 여운은 다가올 냉혹한 비즈니스의 격랑 속에서도 우리들의 마음과 시스템을 안전하고 평화롭게 지켜내 줄 가장 단단한 성찰의 주춧돌이 될 것이다.
+  <section class="hero">
+    <div>
+      <div class="eyebrow">verified link directory</div>
+      <h1>검색엔진이 따라갈 수 있는 링크 허브.</h1>
+      <p class="lead">
+        Link Hub는 운영 중인 사이트, 백링크 자료, 사이트맵 접근성을 한 화면에 정리하는
+        디렉토리입니다. 무작위 링크 모음이 아니라 실제 배포 상태와 도메인 연결 상태를
+        기준으로 선별한 네트워크 인덱스입니다.
       </p>
     </div>
+    <aside class="proof-panel" aria-label="현재 허브 상태">
+      <strong>36</strong>
+      <span>개 대표 운영 도메인을 큐레이션했습니다. 마지막 갱신일은 2026-07-04입니다.</span>
+    </aside>
+  </section>
 
-    <!-- Node Grid 3개 탑재 -->
-    <div class="node-grid">
-      <div class="grid-title">PBN 분산 노드 디렉토리 현황</div>
-      
-      <div class="node-card">
-        <div class="node-header">
-          <span>KR-SEO-NODE-01</span>
-          <span>ACTIVE</span>
-        </div>
-        <div class="node-stars">★★★★★</div>
-        <div class="node-body">
-          SaaS 및 IT 기술 최적화 블로그 네트워크 노드가 정상 바인딩되었습니다. 높은 도메인 신뢰 지수와 FNV-1a 기반 지능형 지문 회피 설계가 적용되어 크롤 버짓 유입량이 최대화되고 있습니다.
-        </div>
-      </div>
+  <main>
+    <section class="principles" aria-label="운영 원칙">
+      <article class="principle">
+        <div class="section-kicker">01</div>
+        <h2>검증된 도메인</h2>
+        <p>무료 호스트 주소가 아니라 커스텀 도메인이 연결된 운영 사이트를 우선 정리합니다.</p>
+      </article>
+      <article class="principle">
+        <div class="section-kicker">02</div>
+        <h2>크롤러 친화성</h2>
+        <p>robots.txt, sitemap.xml, canonical URL을 기준으로 검색엔진이 따라갈 수 있는 구조를 유지합니다.</p>
+      </article>
+      <article class="principle">
+        <div class="section-kicker">03</div>
+        <h2>주제별 분류</h2>
+        <p>업종과 키워드 성격에 따라 마케팅, 생활 정보, 로컬 디렉토리, 전문 자료로 나눕니다.</p>
+      </article>
+    </section>
 
-      <div class="node-card">
-        <div class="node-header">
-          <span>KR-LOCAL-NODE-02</span>
-          <span>ACTIVE</span>
-        </div>
-        <div class="node-stars">★★★★★</div>
-        <div class="node-body">
-          마포 반경 및 가양/등촌 일대의 로컬 생활 정보 지식 아카이브 노드들이 안정적으로 결합되어, 타겟 2티어 사이트들로 수액과 백링크 권위를 정직하게 100% 흘려보내고 있습니다.
-        </div>
-      </div>
+    <div id="directory">
 
-      <div class="node-card">
-        <div class="node-header">
-          <span>JP-NICH-NODE-03</span>
-          <span>STANDBY</span>
+      <section class="directory-section" aria-labelledby="cat-마케팅 자동화">
+        <div class="section-kicker">curated index</div>
+        <h2 id="cat-마케팅 자동화">마케팅 자동화</h2>
+        <div class="link-grid">
+          
+          <a class="link-card" href="https://pbn-builder.xyz/" rel="noopener">
+            <span class="link-host">pbn-builder.xyz</span>
+            <strong>PBN 빌더 자동 백링크 프로그램 분양</strong>
+            <span>PBN 자동화 솔루션 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://ishikyujin.space/" rel="noopener">
+            <span class="link-host">ishikyujin.space</span>
+            <strong>구글 알고리즘 감점 치료 및 백링크 수술실</strong>
+            <span>검색엔진 응급수술 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://water-server.store/" rel="noopener">
+            <span class="link-host">water-server.store</span>
+            <strong>마르지 않는 1급수 백링크 주스 공급 서비스</strong>
+            <span>콘텐츠 급수 정화 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://program-school.online/" rel="noopener">
+            <span class="link-host">program-school.online</span>
+            <strong>4-에이전트 루프 자동화 프로그램 코딩 스쿨</strong>
+            <span>무인 마케팅 스쿨 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://seongnam-dev-blog.node-link.shop/" rel="noopener">
+            <span class="link-host">seongnam-dev-blog.node-link.shop</span>
+            <strong>성남 프로그램 개발 마케팅</strong>
+            <span>성남 · 프로그램 개발 · Tier 3</span>
+          </a>
+          <a class="link-card" href="https://daegu-online-marketing.node-link.shop/" rel="noopener">
+            <span class="link-host">daegu-online-marketing.node-link.shop</span>
+            <strong>대구 SEO 마케팅 업체</strong>
+            <span>대구 · SEO 마케팅 · Tier 3</span>
+          </a>
         </div>
-        <div class="node-stars">★★★★☆</div>
-        <div class="node-body">
-          글로벌 다국어 및 아마존Aff 규약 준수 노드가 백그라운드 컴파일 대기를 완료했습니다. 바가지가 없는 정직한 정찰제 운영으로 도메인 가치를 훼손하지 않는 품격 있는 응대를 지원합니다.
+      </section>
+
+      <section class="directory-section" aria-labelledby="cat-생활 정보">
+        <div class="section-kicker">curated index</div>
+        <h2 id="cat-생활 정보">생활 정보</h2>
+        <div class="link-grid">
+          
+          <a class="link-card" href="https://hwagogshirts.com/" rel="noopener">
+            <span class="link-host">hwagogshirts.com</span>
+            <strong>마포 홍대입구 럭셔리 셔츠룸 리뷰</strong>
+            <span>마포 · 셔츠룸 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://hwagogshirtsroom.com/" rel="noopener">
+            <span class="link-host">hwagogshirtsroom.com</span>
+            <strong>마포/합정 비즈니스 셔츠룸 가이드</strong>
+            <span>마포 · 셔츠룸 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://maphoshirts.com/" rel="noopener">
+            <span class="link-host">maphoshirts.com</span>
+            <strong>마포 셔츠룸 가격 비교 | 투명 정찰제 데이터 분석</strong>
+            <span>마포 · 셔츠룸/비교 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://shirtsroom.site/" rel="noopener">
+            <span class="link-host">shirtsroom.site</span>
+            <strong>마포 셔츠룸 가격 투명성 비교</strong>
+            <span>마포 · 셔츠룸 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://mens-esthe.space/" rel="noopener">
+            <span class="link-host">mens-esthe.space</span>
+            <strong>마포 럭셔리 단체 가라오케 예약 가이드</strong>
+            <span>VIP 단체 모임 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://maphoshirts.live/" rel="noopener">
+            <span class="link-host">maphoshirts.live</span>
+            <strong>마포 홍대 단체 가라오케 예약 가이드 | 합정 가라오케 정보</strong>
+            <span>마포 · 가라오케/VIP · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://aga-uhake.space/" rel="noopener">
+            <span class="link-host">aga-uhake.space</span>
+            <strong>도메인 지수 탈모 방지 및 앵커 텍스트 이식 가이드</strong>
+            <span>지수 성장 클리닉 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://banpo-massage-compare.node-link.shop/" rel="noopener">
+            <span class="link-host">banpo-massage-compare.node-link.shop</span>
+            <strong>반포 마사지 가격비교</strong>
+            <span>반포 · 마사지 · Tier 3</span>
+          </a>
+          <a class="link-card" href="https://hapjeong-song-spot.node-link.shop/" rel="noopener">
+            <span class="link-host">hapjeong-song-spot.node-link.shop</span>
+            <strong>합정 클럽 비교</strong>
+            <span>합정 · 클럽 · Tier 3</span>
+          </a>
         </div>
-      </div>
+      </section>
+
+      <section class="directory-section" aria-labelledby="cat-로컬 디렉토리">
+        <div class="section-kicker">curated index</div>
+        <h2 id="cat-로컬 디렉토리">로컬 디렉토리</h2>
+        <div class="link-grid">
+          
+          <a class="link-card" href="https://maphoshirts.xyz/" rel="noopener">
+            <span class="link-host">maphoshirts.xyz</span>
+            <strong>마포 홍대 셔츠룸 단체 부킹 | 기업 시간제 전문 예약</strong>
+            <span>마포 · 셔츠룸/부킹 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://shirtsroom.website/" rel="noopener">
+            <span class="link-host">shirtsroom.website</span>
+            <strong>마포 홍대 셔츠룸 실시간 단체 부킹</strong>
+            <span>마포 · 셔츠룸 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://shirtsroom.shop/" rel="noopener">
+            <span class="link-host">shirtsroom.shop</span>
+            <strong>마포 셔츠룸 대표 실장 견적 테이블</strong>
+            <span>마포 · 셔츠룸 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://mr-footmassage.com/" rel="noopener">
+            <span class="link-host">mr-footmassage.com</span>
+            <strong>동대문 풋쌤 마사지 테라피</strong>
+            <span>동대문 · 마사지 · Tier 1</span>
+          </a>
+          <a class="link-card" href="https://maphoshirts.today/" rel="noopener">
+            <span class="link-host">maphoshirts.today</span>
+            <strong>셔츠룸 예약</strong>
+            <span>셔츠룸 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://maphoshirts.space/" rel="noopener">
+            <span class="link-host">maphoshirts.space</span>
+            <strong>셔츠룸 사이트</strong>
+            <span>셔츠룸 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://euljiro-club-review.node-link.shop/" rel="noopener">
+            <span class="link-host">euljiro-club-review.node-link.shop</span>
+            <strong>을지로 클럽 솔직후기</strong>
+            <span>을지로 · 클럽 · Tier 3</span>
+          </a>
+          <a class="link-card" href="https://sangam-coin-song.node-link.shop/" rel="noopener">
+            <span class="link-host">sangam-coin-song.node-link.shop</span>
+            <strong>상암 코인노래방 후기</strong>
+            <span>상암 · 코인노래방 · Tier 3</span>
+          </a>
+          <a class="link-card" href="https://banpo-body-care.node-link.shop/" rel="noopener">
+            <span class="link-host">banpo-body-care.node-link.shop</span>
+            <strong>반포 마사지 정보</strong>
+            <span>반포 · 마사지 · Tier 3</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="directory-section" aria-labelledby="cat-전문 자료">
+        <div class="section-kicker">curated index</div>
+        <h2 id="cat-전문 자료">전문 자료</h2>
+        <div class="link-grid">
+          
+          <a class="link-card" href="https://nurse-kyujin.online/" rel="noopener">
+            <span class="link-host">nurse-kyujin.online</span>
+            <strong>구글 봇 정밀 검진 및 크롤 버짓 밀착 간호</strong>
+            <span>크롤러 케어 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://aga-clinic.space/" rel="noopener">
+            <span class="link-host">aga-clinic.space</span>
+            <strong>구글 신뢰 지수 모발이식 솔루션</strong>
+            <span>도메인 파워 증폭 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://fx-torihiki.space/" rel="noopener">
+            <span class="link-host">fx-torihiki.space</span>
+            <strong>구글 틈새 키워드 트래픽 외환 거래 전략</strong>
+            <span>트래픽 차익 투자 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://hikari-fiber.store/" rel="noopener">
+            <span class="link-host">hikari-fiber.store</span>
+            <strong>구글 인덱싱 속도 초고속 광회선 대역폭 최적화</strong>
+            <span>크롤 가속화 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://card-hakkoku.store/" rel="noopener">
+            <span class="link-host">card-hakkoku.store</span>
+            <strong>구글 알고리즘 고신용 도메인 보증 카드 발급</strong>
+            <span>도메인 신용 한도 · Tier 2</span>
+          </a>
+          <a class="link-card" href="https://seoul-site-builder.node-link.shop/" rel="noopener">
+            <span class="link-host">seoul-site-builder.node-link.shop</span>
+            <strong>서울 홈페이지 제작 업체</strong>
+            <span>서울 · 홈페이지 제작 · Tier 3</span>
+          </a>
+          <a class="link-card" href="https://yeouido-search-tip.node-link.shop/" rel="noopener">
+            <span class="link-host">yeouido-search-tip.node-link.shop</span>
+            <strong>여의도 검색 최적화 비용</strong>
+            <span>여의도 · 검색 최적화 · Tier 3</span>
+          </a>
+          <a class="link-card" href="https://ikebukuro-stay-guide.node-link.shop/" rel="noopener">
+            <span class="link-host">ikebukuro-stay-guide.node-link.shop</span>
+            <strong>Ikebukuro hotel 안내</strong>
+            <span>Ikebukuro · 정보 · Tier 3</span>
+          </a>
+          <a class="link-card" href="https://gasan-dev-trend.node-link.shop/" rel="noopener">
+            <span class="link-host">gasan-dev-trend.node-link.shop</span>
+            <strong>가산 프로그램 개발 추천</strong>
+            <span>가산 · 프로그램 개발 · Tier 3</span>
+          </a>
+        </div>
+      </section>
     </div>
 
-    <div class="footer-view">
-      <p>&copy; 2026 LINK-HUB.ORG. All rights reserved.</p>
-    </div>
-  </div>
+    <section id="resources" class="resources">
+      <div>
+        <div class="section-kicker">reference archive</div>
+        <h2>백링크 운영 자료</h2>
+        <p class="lead">
+          아래 문서는 링크 구조, 캐싱, 분산 노드, 해시 기반 다양화처럼 허브 운영에 필요한
+          기술 자료를 정리한 내부 공개 아카이브입니다.
+        </p>
+      </div>
+      <div class="resource-list">
+        <a href="/posts/juice-1.html">검색 노출 최적화와 백링크 설계 매뉴얼</a>
+        <a href="/posts/juice-2.html">네트워크 자동화와 가치 연결 알고리즘 리포트</a>
+        <a href="/posts/normal-1.html">SaaS 아키텍처와 멀티테넌시 설계 노트</a>
+        <a href="/posts/normal-2.html">웹 캐싱과 분산 엣지 컴퓨팅 지형도</a>
+        <a href="/posts/normal-3.html">FNV-1a 해싱과 다양성 시드 해설</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Link Hub. Curated directory for reachable domains.</span>
+    <span>Canonical: https://link-hub.org/</span>
+  </footer>
 </body>
 </html>
