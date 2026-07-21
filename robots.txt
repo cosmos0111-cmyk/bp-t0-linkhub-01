@@ -11,3 +11,4 @@ User-agent: Yeti
 Allow: /
 
 Sitemap: https://link-hub.org/sitemap.xml
+Sitemap: https://link-hub.org/sitemap-index.xml

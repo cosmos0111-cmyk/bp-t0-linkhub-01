@@ -1,63 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#be185d"/>
-      <stop offset="100%" stop-color="#9d174d"/>
-    </linearGradient>
-    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f472b6"/>
-      <stop offset="100%" stop-color="#9d174d"/>
-    </linearGradient>
-  </defs>
-
-  <!-- 배경 -->
-  <rect width="1200" height="630" fill="url(#bg)"/>
-
-  <!-- Geometric pattern -->
-  <circle cx="447" cy="724" r="41" fill="#9d174d" opacity="0.17"/>
-    <circle cx="388" cy="559" r="50" fill="#9d174d" opacity="0.10"/>
-    <circle cx="527" cy="-11" r="93" fill="#9d174d" opacity="0.18"/>
-    <circle cx="1126" cy="120" r="20" fill="#9d174d" opacity="0.11"/>
-    <circle cx="347" cy="50" r="96" fill="#9d174d" opacity="0.13"/>
-    <circle cx="241" cy="404" r="25" fill="#9d174d" opacity="0.18"/>
-    <rect x="1233" y="503" width="77" height="98" rx="8" fill="#be185d" opacity="0.14" transform="rotate(17, 387, 239)"/>
-    <rect x="957" y="594" width="32" height="20" rx="8" fill="#be185d" opacity="0.08" transform="rotate(9, 251, -10)"/>
-    <rect x="1071" y="283" width="23" height="24" rx="8" fill="#be185d" opacity="0.13" transform="rotate(44, -39, 44)"/>
-    <rect x="340" y="200" width="52" height="66" rx="8" fill="#be185d" opacity="0.14" transform="rotate(1, 52, 445)"/>
-    <rect x="706" y="118" width="86" height="68" rx="8" fill="#be185d" opacity="0.11" transform="rotate(12, 623, 211)"/>
-    <rect x="1168" y="414" width="38" height="23" rx="8" fill="#be185d" opacity="0.06" transform="rotate(26, 1109, -89)"/>
-    <rect x="1182" y="149" width="51" height="65" rx="8" fill="#be185d" opacity="0.08" transform="rotate(21, 341, -46)"/>
-    <rect x="1214" y="-72" width="52" height="21" rx="8" fill="#be185d" opacity="0.14" transform="rotate(14, 596, 2)"/>
-    <polygon points="273,20 319,112 227,112" fill="#9d174d" opacity="0.03"/>
-    <polygon points="660,111 715,221 605,221" fill="#9d174d" opacity="0.07"/>
-    <polygon points="490,113 528,189 452,189" fill="#9d174d" opacity="0.11"/>
-    <polygon points="267,635 357,815 177,815" fill="#9d174d" opacity="0.04"/>
-
-  <!-- Wave at bottom -->
-  <path d="M0,552 C360,591 840,513 1200,552 L1200,630 L0,630Z" fill="#9d174d" opacity="0.3"/>
-
-  <!-- 중앙 텍스트 카드 -->
-  <rect x="80" y="195" width="1040" height="260" rx="20" fill="rgba(0,0,0,0.35)" filter="url(#blur-bg)"/>
-  <filter id="blur-bg"><feGaussianBlur stdDeviation="8"/></filter>
-
-  <text x="600" y="270" text-anchor="middle" font-family="'Noto Sans JP','Noto Sans KR','Pretendard',sans-serif" font-size="44" font-weight="700" fill="#ffffff" letter-spacing="2">
-    마포 마사지 링크
-  </text>
-  <text x="600" y="330" text-anchor="middle" font-family="'Noto Sans JP','Noto Sans KR','Pretendard',sans-serif" font-size="22" font-weight="400" fill="rgba(255,255,255,0.85)">
-    마포 — 마사지
-  </text>
-
-  <!-- Accent line -->
-  <line x1="450" y1="355" x2="750" y2="355" stroke="#f472b6" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
-
-  <!-- 하단 CTA -->
-  <rect x="440" y="385" width="320" height="40" rx="20" fill="#f472b6" opacity="0.9"/>
-  <text x="600" y="411" text-anchor="middle" font-family="'Noto Sans JP','Noto Sans KR','Pretendard',sans-serif" font-size="16" font-weight="600" fill="#ffffff">
-    ▼ 자세히 보기
-  </text>
-
-  <!-- 상단 브랜드 -->
-  <text x="60" y="55" font-family="'Noto Sans JP','Noto Sans KR','Pretendard',sans-serif" font-size="18" font-weight="600" fill="rgba(255,255,255,0.6)">
-    마포 마포 마사지 링크 — 마사지
-  </text>
+  <rect width="1200" height="630" fill="#f7f4ec"/>
+  <rect x="58" y="58" width="1084" height="514" fill="#fff" stroke="#1f2a2e" stroke-width="3"/>
+  <text x="100" y="180" fill="#0f6f68" font-family="Arial, sans-serif" font-size="34" font-weight="700">LINK HUB</text>
+  <text x="100" y="305" fill="#171717" font-family="Georgia, serif" font-size="86" font-weight="700">Verified link directory</text>
+  <text x="104" y="386" fill="#66645f" font-family="Arial, sans-serif" font-size="32">Custom domains, sitemaps, and crawler-friendly references.</text>
+  <path d="M880 326c-54 0-98-44-98-98s44-98 98-98h86v56h-86c-23 0-42 19-42 42s19 42 42 42h86v56h-86Z" fill="#0f6f68"/>
+  <path d="M966 500h86c23 0 42-19 42-42s-19-42-42-42h-86v-56h86c54 0 98 44 98 98s-44 98-98 98h-86v-56Z" fill="#b84a2f"/>
+  <path d="M887 277h150v56H887z" fill="#1f2a2e"/>
 </svg>
